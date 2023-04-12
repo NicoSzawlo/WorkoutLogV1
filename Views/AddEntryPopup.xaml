@@ -5,7 +5,8 @@
                x:Class="WorkoutLogV1.Views.AddEntryPopup">
 
     <VerticalStackLayout>
-        <Label Text="This is a very important message!" />
+        <Label Text="This is a very important message!"
+               FontSize="36"/>
     </VerticalStackLayout>
 
 </toolkit:Popup>

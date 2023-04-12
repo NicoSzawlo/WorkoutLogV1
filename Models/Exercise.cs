@@ -10,8 +10,7 @@ namespace WorkoutLogV1.Models
     {
         public DateOnly Date { get; set; }
         public string Name { get; set; }
-        public string SetsReps { get; set; }
-        public string Weight { get; set; }
+        public List<(int,double)> Sets { get; set; } //Contains number of reps and weight
         public string Notes { get; set; }
     }
 }
