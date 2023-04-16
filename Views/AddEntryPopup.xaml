@@ -2,11 +2,19 @@
 <toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:viewmodels="clr-namespace:WorkoutLogV1.ViewModels;assembly=WorkoutLogV1"
+               x:DataType="viewmodels:DailyViewModel"
                x:Class="WorkoutLogV1.Views.AddEntryPopup">
-
+    <toolkit:Popup.BindingContext>
+        <viewmodels:DailyViewModel/>
+    </toolkit:Popup.BindingContext>
+    
     <VerticalStackLayout>
-        <Label Text="This is a very important message!"
-               FontSize="36"/>
+        <Label Text="Name"
+               FontSize="Large"/>
+        <Entry Text="{Binding AddName}"/>
+        <Button Command="{Binding AddWorkoutCommand}"
+                Text="Add"/>
     </VerticalStackLayout>
 
 </toolkit:Popup>

@@ -23,8 +23,7 @@ public partial class MainPage : ContentPage
 	}
 	private void OnCalendarViewClicked(object sender, EventArgs e)
 	{
-		var popup = new Views.AddEntryPopup();
-		this.ShowPopup(popup);
+		
 	}
 }
 
