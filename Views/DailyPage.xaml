@@ -19,7 +19,7 @@
                   Margin="10"
                   ItemsSource="{Binding DailyList}">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:WeightTraining">
+                <DataTemplate x:DataType="model:Training">
                     <ViewCell>
                         <Grid Padding="5"
                               HorizontalOptions="Center">

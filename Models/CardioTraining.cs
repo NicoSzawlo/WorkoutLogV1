@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace WorkoutLogV1.Models
 {
-    public class CardioTraining : Training
+    public interface ICardioTraining
     {
-        
+        TimeSpan Duration { get; set; }
+        double Distance { get; set; }
     }
 }

@@ -1,7 +1,5 @@
 ﻿using Microsoft.Maui.Layouts;
 using CommunityToolkit.Maui.Views;
-using MvvmHelpers;
-using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,47 +9,60 @@ using System.Windows.Input;
 using WorkoutLogV1.Models;
 using WorkoutLogV1.Views;
 using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.ComponentModel;
+using WorkoutLogV1.Messages;
+using CommunityToolkit.Mvvm.Input;
 
 namespace WorkoutLogV1.ViewModels
 {
-    public class DailyViewModel : ViewModelBase
+    public partial class DailyViewModel : ObservableObject
     {
-        public ObservableRangeCollection<WeightTraining> DailyList { get; set; }
-        public AsyncCommand RefreshCommand { get; }
+        private ObservableCollection<Training> _dailyList;
+        public ObservableCollection<Training> DailyList { get => _dailyList; set => SetProperty(ref _dailyList, value); }
         public DailyViewModel()
         {
-            Title = "Daily Page";
-            AddWorkoutCommand = new MvvmHelpers.Commands.Command(AddWorkout);
-            RefreshCommand = new AsyncCommand(Refresh);
-            DailyList = new ObservableRangeCollection<WeightTraining>
+
+            WeakReferenceMessenger.Default.Register<AddTrainingMessage>(this, (r, m) =>
             {
-                new WeightTraining { Name = "Squats" },
-                new WeightTraining { Name = "Deadlifts" },
-                new WeightTraining { Name = "Military Press" },
-                new WeightTraining { Name = "Barbell Rows" },
-                new WeightTraining { Name = "Dumbbell Lunges" },
-                new WeightTraining { Name = "Cable Flyes" },
-                new WeightTraining { Name = "Incline Bench Press" },
-                new WeightTraining { Name = "Seated Leg Press" },
-                new WeightTraining { Name = "Hammer Curls" },
-                new WeightTraining { Name = "Lat Pulldowns" },
-                new WeightTraining { Name = "Tricep Pushdowns" },
-                new WeightTraining { Name = "Bicep Curls" },
-                new WeightTraining { Name = "Calf Raises" },
-                new WeightTraining { Name = "Plank Hold" },
-                new WeightTraining { Name = "Russian Twists" },
-                new WeightTraining { Name = "Bent O231ver Rows" },
-                new WeightTraining { Name = "Lat P12ulldowns" },
-                new WeightTraining { Name = "Trice2p2 Pushdowns" },
-                new WeightTraining { Name = "Bicep 123Curls" },
-                new WeightTraining { Name = "Calf 12Raises" },
-                new WeightTraining { Name = "Plank 23Hold" },
-                new WeightTraining { Name = "Russian12 Twists" },
-                new WeightTraining { Name = "Bent Ov12er Rows" }
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    Add(m.Value);
+                });
+            });
+            DailyList1 = new ObservableCollection<Training>
+            {
+                new Training { Name = "Squats", Sets = new List<WeightExercise> { new WeightExercise { Reps = 10, Weight = 19.5}, new WeightExercise { Reps = 15, Weight = 25.3 } } },
+                new Training { Name = "Deadlifts" },
+                new Training { Name = "Military Press" },
+                new Training { Name = "Barbell Rows" },
+                new Training { Name = "Dumbbell Lunges" },
+                new Training { Name = "Cable Flyes" },
+                new Training { Name = "Incline Bench Press" },
+                new Training { Name = "Seated Leg Press" },
+                new Training { Name = "Hammer Curls" },
+                new Training { Name = "Lat Pulldowns" },
+                new Training { Name = "Tricep Pushdowns" },
+                new Training { Name = "Bicep Curls" },
+                new Training { Name = "Calf Raises" },
+                new Training { Name = "Plank Hold" },
+                new Training { Name = "Russian Twists" },
+                new Training { Name = "Bent O231ver Rows" },
+                new Training { Name = "Lat P12ulldowns" },
+                new Training { Name = "Trice2p2 Pushdowns" },
+                new Training { Name = "Bicep 123Curls" },
+                new Training { Name = "Calf 12Raises" },
+                new Training { Name = "Plank 23Hold" },
+                new Training { Name = "Russian12 Twists" },
+                new Training { Name = "Bent Ov12er Rows" }
             };
-            
+
         }
-        
+        void Add(Training training)
+        {
+            if (training == null) throw new ArgumentNullException();
+            DailyList1.Add(training);
+        }
 
         string testText = "Test 123 123";
         public string TestText
@@ -59,25 +70,6 @@ namespace WorkoutLogV1.ViewModels
             get => testText;
             set => SetProperty(ref testText, value);
         }
-
-        string addName = "-";
-        public string AddName
-        {
-            get => addName;
-            set => SetProperty(ref addName, value);
-        }
-        public ICommand AddWorkoutCommand { get; }
-        void AddWorkout()
-        {
-            WeightTraining exc = new WeightTraining() { Name = AddName };
-            DailyList.Add(exc);
-        }
-
-        async Task Refresh()
-        {
-            IsBusy = true;
-            await Task.Delay(2000);
-            IsBusy = false;
-        }
+        public ObservableCollection<Training> DailyList1 { get => _dailyList; set => _dailyList = value; }
     }
 }
