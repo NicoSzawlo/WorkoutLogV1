@@ -24,74 +24,74 @@ namespace WorkoutLogV1.Models
         public List<WeightExercise> Sets {
             get
             {
-                if (IsRepetetiveWorkout)
-                {
+                //if (IsRepetetiveWorkout)
+                //{
                     return sets;
-                }
-                else
-                {
-                    throw new InvalidOperationException("Error: this is not a Weight workout");
-                }
+                //}
+                //else
+                //{
+                //    throw new InvalidOperationException("Error: this is not a Weight workout");
+                //}
             }
             set
             {
-                if (IsRepetetiveWorkout)
-                {
+                //if (IsRepetetiveWorkout)
+                //{
                     sets = value;
-                }
-                else
-                {
-                    throw new InvalidOperationException("Error: this is not a Cardioworkout");
-                }
+                //}
+                //else
+                //{
+                //    throw new InvalidOperationException("Error: this is not a Cardioworkout");
+                //}
             }
         }
         public TimeSpan Duration
         {
             get
             {
-                if (!IsRepetetiveWorkout)
-                {
+                //if (!IsRepetetiveWorkout)
+                //{
                     return duration;
-                }
-                else
-                {
-                    throw new InvalidOperationException("Error: this is not a Cardioworkout");
-                }
+                //}
+                //else
+                //{
+                //    throw new InvalidOperationException("Error: this is not a Cardioworkout");
+                //}
             }
             set 
             {
-                if (!IsRepetetiveWorkout)
-                {
+                //if (!IsRepetetiveWorkout)
+                //{
                     duration = value;
-                }
-                else
-                {
-                    throw new InvalidOperationException("Error: this is not a Cardioworkout");
-                }
+                //}
+                //else
+                //{
+                //    throw new InvalidOperationException("Error: this is not a Cardioworkout");
+                //}
             }
         }
         public double Distance {
             get
             {
-                if (!IsRepetetiveWorkout)
-                {
+                //if (!IsRepetetiveWorkout)
+                //{
                     return distance;
-                }
-                else
-                {
-                    throw new InvalidOperationException("Error: this is not a Cardioworkout");
-                }
+                //}
+                //else
+                //{
+                //    throw new InvalidOperationException("Error: this is not a Cardioworkout");
+                //}
             }
             set
             {
-                if (!IsRepetetiveWorkout)
-                {
+                //if (!IsRepetetiveWorkout)
+                //{
                     distance = value;
-                }
-                else
-                {
-                    throw new InvalidOperationException("Error: this is not a Cardioworkout");
-                }
+                //}
+                //else
+                //{
+                //    throw new InvalidOperationException("Error: this is not a Cardioworkout");
+                //}
             }
         }
     }

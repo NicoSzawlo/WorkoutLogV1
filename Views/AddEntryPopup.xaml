@@ -13,7 +13,7 @@
         <Label Text="Name"
                FontSize="Large"/>
         <Entry Text="{Binding Name}"/>
-        <Button Command="{Binding AddTraining}"
+        <Button Command="{Binding AddTrainingCommand}"
                 Text="Add"/>
     </VerticalStackLayout>
 

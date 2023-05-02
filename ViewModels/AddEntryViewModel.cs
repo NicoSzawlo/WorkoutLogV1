@@ -9,33 +9,20 @@ namespace WorkoutLogV1.ViewModels
 {
     public partial class AddEntryViewModel : ObservableObject
     {
-        public AddEntryViewModel() 
-        { 
-            ExecuteAdd = new AsyncComma
-        }
-        private Training _training;
+        [ObservableProperty]
+        string name;
+        [ObservableProperty]
+        string description;
 
-        public Training Training
+        public AddEntryViewModel()
         {
-            get => _training;
-            set
-            {
-                SetProperty(ref _training, value);
-            }
         }
 
-        string _name = "-";
-        public string Name
-        {
-            get => _name;
-            set => SetProperty(ref _name, value);
-        }
-        public ICommand ExecuteAdd { get; }
+        [RelayCommand]
         void AddTraining()
         {
-            Training training = new Training() { Name = _name };
+            Training training = new Training() { Name = this.Name };
             WeakReferenceMessenger.Default.Send(new AddTrainingMessage(training));
-            await GoBack();
         }
 
     }

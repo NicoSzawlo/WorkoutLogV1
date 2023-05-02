@@ -18,8 +18,10 @@ namespace WorkoutLogV1.ViewModels
 {
     public partial class DailyViewModel : ObservableObject
     {
-        private ObservableCollection<Training> _dailyList;
-        public ObservableCollection<Training> DailyList { get => _dailyList; set => SetProperty(ref _dailyList, value); }
+        [ObservableProperty]
+        ObservableCollection<Training> dailyList;
+        [ObservableProperty]
+        Training selectedTraining;
         public DailyViewModel()
         {
 
@@ -30,7 +32,7 @@ namespace WorkoutLogV1.ViewModels
                     Add(m.Value);
                 });
             });
-            DailyList1 = new ObservableCollection<Training>
+            dailyList = new ObservableCollection<Training>
             {
                 new Training { Name = "Squats", Sets = new List<WeightExercise> { new WeightExercise { Reps = 10, Weight = 19.5}, new WeightExercise { Reps = 15, Weight = 25.3 } } },
                 new Training { Name = "Deadlifts" },
@@ -58,18 +60,17 @@ namespace WorkoutLogV1.ViewModels
             };
 
         }
+        [RelayCommand]
+        void OpenEntry()
+        {
+            string a = "a";
+            a = "b";
+        }
+
         void Add(Training training)
         {
             if (training == null) throw new ArgumentNullException();
-            DailyList1.Add(training);
+            dailyList.Add(training);
         }
-
-        string testText = "Test 123 123";
-        public string TestText
-        {
-            get => testText;
-            set => SetProperty(ref testText, value);
-        }
-        public ObservableCollection<Training> DailyList1 { get => _dailyList; set => _dailyList = value; }
     }
 }

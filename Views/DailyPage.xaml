@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:WorkoutLogV1.ViewModels;assembly=WorkoutLogV1"
-             xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
              xmlns:model="clr-namespace:WorkoutLogV1.Models"
              x:DataType="viewmodels:DailyViewModel"
              x:Class="WorkoutLogV1.Views.DailyPage"
@@ -17,7 +16,8 @@
                   AbsoluteLayout.LayoutBounds="0,0,1,1"
                   AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional"
                   Margin="10"
-                  ItemsSource="{Binding DailyList}">
+                  ItemsSource="{Binding DailyList}"
+                  SelectedItem="{Binding SelectedTraining}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Training">
                     <ViewCell>
@@ -28,8 +28,10 @@
                                    VerticalOptions="Center"
                                    HorizontalOptions="Center"
                                    Grid.Column="1"/>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer x:DataType="viewmodels:DailyViewModel" Command="{Binding OpenEntryCommand}"/>
+                            </Grid.GestureRecognizers>
                         </Grid>
-                       
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

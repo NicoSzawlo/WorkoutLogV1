@@ -1,6 +1,5 @@
 using CommunityToolkit.Maui.Views;
 using WorkoutLogV1.ViewModels;
-using MvvmHelpers;
 
 namespace WorkoutLogV1.Views;
 
