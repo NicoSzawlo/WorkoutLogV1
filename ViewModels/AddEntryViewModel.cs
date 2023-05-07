@@ -10,9 +10,19 @@ namespace WorkoutLogV1.ViewModels
     public partial class AddEntryViewModel : ObservableObject
     {
         [ObservableProperty]
+        DateOnly date;
+        [ObservableProperty]
         string name;
         [ObservableProperty]
-        string description;
+        string note;
+        [ObservableProperty]
+        double weight;
+        [ObservableProperty]
+        int reps;
+        [ObservableProperty]
+        bool isEndurance;
+        [ObservableProperty]
+        List<WeightExercise> weightExercises;
 
         public AddEntryViewModel()
         {
@@ -21,8 +31,33 @@ namespace WorkoutLogV1.ViewModels
         [RelayCommand]
         void AddTraining()
         {
-            Training training = new Training() { Name = this.Name };
+            Training training = new Training() {
+                Name = this.Name,
+                Note = this.Note,
+                Date = this.Date,
+                Sets = this.WeightExercises,
+                IsEnduranceWorkout = this.IsEndurance};
             WeakReferenceMessenger.Default.Send(new AddTrainingMessage(training));
+        }
+
+        [RelayCommand]
+        void SwitchEndurance()
+        {
+            IsEndurance = !IsEndurance;
+        }
+        [RelayCommand]
+        void AddSet()
+        {
+            if (WeightExercises == null)
+            {
+                WeightExercises = new List<WeightExercise>() { new WeightExercise() { Reps = this.Reps, Weight = this.Weight } };
+
+            }
+            else
+            {
+                WeightExercises.Add(new WeightExercise() { Reps = this.Reps, Weight = this.Weight });
+            }
+            
         }
 
     }

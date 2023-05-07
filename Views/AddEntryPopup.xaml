@@ -3,18 +3,72 @@
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                xmlns:viewmodels="clr-namespace:WorkoutLogV1.ViewModels;assembly=WorkoutLogV1"
+               xmlns:model="clr-namespace:WorkoutLogV1.Models"
                x:DataType="viewmodels:AddEntryViewModel"
-               x:Class="WorkoutLogV1.Views.AddEntryPopup">
+               x:Class="WorkoutLogV1.Views.AddEntryPopup"
+               Size="500,500,500,50">
     <toolkit:Popup.BindingContext>
         <viewmodels:AddEntryViewModel/>
     </toolkit:Popup.BindingContext>
-    
     <VerticalStackLayout>
+        <!-- General Workout properties -->
+        <Label Text="Date"
+               FontSize="Large"
+               HorizontalOptions="Center"/>
+        <DatePicker Date="{Binding Date}"/>
         <Label Text="Name"
-               FontSize="Large"/>
+               FontSize="Large"
+               HorizontalOptions="Center"/>
         <Entry Text="{Binding Name}"/>
+        <Label Text="Note"
+               FontSize="Large"
+               HorizontalOptions="Center"/>
+        <Entry Text="{Binding Note}"/>
+        <!-- Weight workout Controls -->
+        <VerticalStackLayout Margin="25">
+            <Label Text="Weight Training"
+               FontSize="Large"
+               HorizontalOptions="Center"/>
+            <Label Text="Reps"
+               FontSize="Medium"
+               HorizontalOptions="Center"/>
+            <Entry Text="{Binding Reps}"/>
+            <Label Text="Weight"
+               FontSize="Medium"
+               HorizontalOptions="Center"/>
+            <Entry Text="{Binding Weight}"/>
+            <Button Text="Add Set"
+                    Command="{Binding AddSetCommand}"/>
+            <VerticalStackLayout.Triggers>
+                <DataTrigger TargetType="VerticalStackLayout"
+                             Binding="{Binding IsEndurance}"
+                             Value="true">
+                    <Setter Property="IsVisible" Value="false"/>
+                </DataTrigger>
+                <DataTrigger TargetType="VerticalStackLayout"
+                             Binding="{Binding IsEndurance}"
+                             Value="false">
+                    <Setter Property="IsVisible" Value="true"/>
+                </DataTrigger>
+            </VerticalStackLayout.Triggers>
+        </VerticalStackLayout>
+        <Button Command="{Binding SwitchEnduranceCommand}"
+                Text="Change Workout Type">
+            <Button.Triggers>
+                <DataTrigger TargetType="Button"
+                             Binding="{Binding IsEndurance}"
+                             Value="true">
+                    <Setter Property="BackgroundColor" Value="LightGrey"/>
+                </DataTrigger>
+                <DataTrigger TargetType="Button"
+                             Binding="{Binding IsEndurance}"
+                             Value="false">
+                    <Setter Property="BackgroundColor" Value="White"/>
+                </DataTrigger>
+            </Button.Triggers>
+        </Button>
         <Button Command="{Binding AddTrainingCommand}"
-                Text="Add"/>
+                Text="Add" WidthRequest="200"/>
     </VerticalStackLayout>
 
 </toolkit:Popup>

@@ -34,43 +34,22 @@ namespace WorkoutLogV1.ViewModels
             });
             dailyList = new ObservableCollection<Training>
             {
-                new Training { Name = "Squats", Sets = new List<WeightExercise> { new WeightExercise { Reps = 10, Weight = 19.5}, new WeightExercise { Reps = 15, Weight = 25.3 } } },
-                new Training { Name = "Deadlifts" },
-                new Training { Name = "Military Press" },
-                new Training { Name = "Barbell Rows" },
-                new Training { Name = "Dumbbell Lunges" },
-                new Training { Name = "Cable Flyes" },
-                new Training { Name = "Incline Bench Press" },
-                new Training { Name = "Seated Leg Press" },
-                new Training { Name = "Hammer Curls" },
-                new Training { Name = "Lat Pulldowns" },
-                new Training { Name = "Tricep Pushdowns" },
-                new Training { Name = "Bicep Curls" },
-                new Training { Name = "Calf Raises" },
-                new Training { Name = "Plank Hold" },
-                new Training { Name = "Russian Twists" },
-                new Training { Name = "Bent O231ver Rows" },
-                new Training { Name = "Lat P12ulldowns" },
-                new Training { Name = "Trice2p2 Pushdowns" },
-                new Training { Name = "Bicep 123Curls" },
-                new Training { Name = "Calf 12Raises" },
-                new Training { Name = "Plank 23Hold" },
-                new Training { Name = "Russian12 Twists" },
-                new Training { Name = "Bent Ov12er Rows" }
+                new Training { Name = "Squats", Sets = new List<WeightExercise> { 
+                    new WeightExercise { Reps = 10, Weight = 19.5}, 
+                    new WeightExercise { Reps = 15, Weight = 25.3 } } }
             };
 
         }
         [RelayCommand]
         void OpenEntry()
         {
-            string a = "a";
-            a = "b";
+            WeakReferenceMessenger.Default.Send(new OpenTrainingMessage(SelectedTraining));
         }
 
         void Add(Training training)
         {
             if (training == null) throw new ArgumentNullException();
-            dailyList.Add(training);
+            DailyList.Add(training);
         }
     }
 }
