@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WorkoutLogV1.Models
 {
-    public interface IWeightTraining
+    public class WeightTraining : Training
     {
         public List<WeightExercise> Sets { get; set; }
     }

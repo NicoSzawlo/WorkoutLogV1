@@ -20,6 +20,10 @@ namespace WorkoutLogV1.ViewModels
         [ObservableProperty]
         int reps;
         [ObservableProperty]
+        TimeSpan time;
+        [ObservableProperty]
+        double distance;
+        [ObservableProperty]
         bool isEndurance;
         [ObservableProperty]
         List<WeightExercise> weightExercises;
@@ -34,9 +38,7 @@ namespace WorkoutLogV1.ViewModels
             Training training = new Training() {
                 Name = this.Name,
                 Note = this.Note,
-                Date = this.Date,
-                Sets = this.WeightExercises,
-                IsEnduranceWorkout = this.IsEndurance};
+                Date = this.Date};
             WeakReferenceMessenger.Default.Send(new AddTrainingMessage(training));
         }
 

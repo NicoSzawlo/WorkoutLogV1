@@ -19,7 +19,7 @@ namespace WorkoutLogV1.ViewModels
     public partial class DailyViewModel : ObservableObject
     {
         [ObservableProperty]
-        ObservableCollection<Training> dailyList;
+        List<Training> dailyList;
         [ObservableProperty]
         Training selectedTraining;
         public DailyViewModel()
@@ -32,13 +32,12 @@ namespace WorkoutLogV1.ViewModels
                     Add(m.Value);
                 });
             });
-            dailyList = new ObservableCollection<Training>
+            dailyList = new List<Training>
             {
-                new Training { Name = "Squats", Sets = new List<WeightExercise> { 
+                new WeightTraining { Name = "Squats", Sets = new List<WeightExercise> { 
                     new WeightExercise { Reps = 10, Weight = 19.5}, 
                     new WeightExercise { Reps = 15, Weight = 25.3 } } }
             };
-
         }
         [RelayCommand]
         void OpenEntry()

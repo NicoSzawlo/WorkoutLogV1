@@ -37,8 +37,6 @@
                FontSize="Medium"
                HorizontalOptions="Center"/>
             <Entry Text="{Binding Weight}"/>
-            <Button Text="Add Set"
-                    Command="{Binding AddSetCommand}"/>
             <VerticalStackLayout.Triggers>
                 <DataTrigger TargetType="VerticalStackLayout"
                              Binding="{Binding IsEndurance}"
@@ -49,6 +47,32 @@
                              Binding="{Binding IsEndurance}"
                              Value="false">
                     <Setter Property="IsVisible" Value="true"/>
+                </DataTrigger>
+            </VerticalStackLayout.Triggers>
+        </VerticalStackLayout>
+        <!-- Cardio workout Controls -->
+        <VerticalStackLayout Margin="25">
+            <Label Text="Weight Training"
+               FontSize="Large"
+               HorizontalOptions="Center"/>
+            <Label Text="Reps"
+               FontSize="Medium"
+               HorizontalOptions="Center"/>
+            <Entry Text="{Binding Reps}"/>
+            <Label Text="Weight"
+               FontSize="Medium"
+               HorizontalOptions="Center"/>
+            <Entry Text="{Binding Weight}"/>
+            <VerticalStackLayout.Triggers>
+                <DataTrigger TargetType="VerticalStackLayout"
+                             Binding="{Binding IsEndurance}"
+                             Value="true">
+                    <Setter Property="IsVisible" Value="true"/>
+                </DataTrigger>
+                <DataTrigger TargetType="VerticalStackLayout"
+                             Binding="{Binding IsEndurance}"
+                             Value="false">
+                    <Setter Property="IsVisible" Value="false"/>
                 </DataTrigger>
             </VerticalStackLayout.Triggers>
         </VerticalStackLayout>
