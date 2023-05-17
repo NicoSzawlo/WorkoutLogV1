@@ -36,9 +36,9 @@ namespace WorkoutLogV1.ViewModels
         void AddTraining()
         {
             Training training = new Training() {
-                Name = this.Name,
-                Note = this.Note,
-                Date = this.Date};
+                Name = Name,
+                Note = Note,
+                Date = Date};
             WeakReferenceMessenger.Default.Send(new AddTrainingMessage(training));
         }
 
@@ -50,15 +50,15 @@ namespace WorkoutLogV1.ViewModels
         [RelayCommand]
         void AddSet()
         {
-            if (WeightExercises == null)
-            {
-                WeightExercises = new List<WeightExercise>() { new WeightExercise() { Reps = this.Reps, Weight = this.Weight } };
+            //if (WeightExercises == null)
+            //{
+            //    WeightExercises = new List<WeightExercise>() { new WeightExercise() { Reps = this.Reps, Weight = this.Weight } };
 
-            }
-            else
-            {
-                WeightExercises.Add(new WeightExercise() { Reps = this.Reps, Weight = this.Weight });
-            }
+            //}
+            //else
+            //{
+            //    WeightExercises.Add(new WeightExercise() { Reps = this.Reps, Weight = this.Weight });
+            //}
             
         }
 

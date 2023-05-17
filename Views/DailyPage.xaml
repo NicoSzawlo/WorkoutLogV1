@@ -5,6 +5,7 @@
              xmlns:model="clr-namespace:WorkoutLogV1.Models"
              x:DataType="viewmodels:DailyViewModel"
              x:Class="WorkoutLogV1.Views.DailyPage"
+             x:Name="DailyView"
              Title="DailyPage">
     
     <ContentPage.BindingContext>
@@ -16,8 +17,7 @@
                   AbsoluteLayout.LayoutBounds="0,0,1,1"
                   AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional"
                   Margin="10"
-                  ItemsSource="{Binding DailyList}"
-                  SelectedItem="{Binding SelectedTraining}">
+                  ItemsSource="{Binding DailyList}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Training">
                     <ViewCell>
@@ -29,7 +29,8 @@
                                    HorizontalOptions="Center"
                                    Grid.Column="1"/>
                             <Grid.GestureRecognizers>
-                                <TapGestureRecognizer x:DataType="viewmodels:DailyViewModel" Command="{Binding OpenEntryCommand}"/>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.OpenEntryCommand,Source={x:Reference DailyView}}"
+                                                      CommandParameter="{Binding .}"/>
                             </Grid.GestureRecognizers>
                         </Grid>
                     </ViewCell>

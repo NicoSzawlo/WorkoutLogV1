@@ -5,9 +5,11 @@ namespace WorkoutLogV1.Views;
 
 public partial class DailyPage : ContentPage
 {
+	DailyViewModel viewmodel = new();
 	public DailyPage()
 	{
-		InitializeComponent(); 
+		InitializeComponent();
+		BindingContext = viewmodel;
 	}
 	void onAddEntryClicked(object sender, EventArgs e)
 	{

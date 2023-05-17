@@ -92,7 +92,9 @@
             </Button.Triggers>
         </Button>
         <Button Command="{Binding AddTrainingCommand}"
-                Text="Add" WidthRequest="200"/>
+                Text="Add" 
+                WidthRequest="200"
+                HorizontalOptions="Center"/>
     </VerticalStackLayout>
 
 </toolkit:Popup>
