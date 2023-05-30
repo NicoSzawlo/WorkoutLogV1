@@ -9,7 +9,7 @@ namespace WorkoutLogV1.Models
 {
     public partial class Training
     {
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; }
         public string Name { get; set; }
         public string Note { get; set; }
 

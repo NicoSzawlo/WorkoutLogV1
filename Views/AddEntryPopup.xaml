@@ -15,15 +15,15 @@
         <Label Text="Date"
                FontSize="Large"
                HorizontalOptions="Center"/>
-        <DatePicker Date="{Binding Date}"/>
+        <DatePicker Date="{Binding TrainDate}"/>
         <Label Text="Name"
                FontSize="Large"
                HorizontalOptions="Center"/>
-        <Entry Text="{Binding Name}"/>
+        <Entry Text="{Binding TrainName}"/>
         <Label Text="Note"
                FontSize="Large"
                HorizontalOptions="Center"/>
-        <Entry Text="{Binding Note}"/>
+        <Entry Text="{Binding TrainNote}"/>
         <!-- Weight workout Controls -->
         <VerticalStackLayout Margin="25">
             <Label Text="Weight Training"
@@ -32,19 +32,19 @@
             <Label Text="Reps"
                FontSize="Medium"
                HorizontalOptions="Center"/>
-            <Entry Text="{Binding Reps}"/>
+            <Entry Text="{Binding TrainReps}"/>
             <Label Text="Weight"
                FontSize="Medium"
                HorizontalOptions="Center"/>
-            <Entry Text="{Binding Weight}"/>
+            <Entry Text="{Binding TrainWeight}"/>
             <VerticalStackLayout.Triggers>
                 <DataTrigger TargetType="VerticalStackLayout"
-                             Binding="{Binding IsEndurance}"
+                             Binding="{Binding TrainIsEndurance}"
                              Value="true">
                     <Setter Property="IsVisible" Value="false"/>
                 </DataTrigger>
                 <DataTrigger TargetType="VerticalStackLayout"
-                             Binding="{Binding IsEndurance}"
+                             Binding="{Binding TrainIsEndurance}"
                              Value="false">
                     <Setter Property="IsVisible" Value="true"/>
                 </DataTrigger>
@@ -52,40 +52,52 @@
         </VerticalStackLayout>
         <!-- Cardio workout Controls -->
         <VerticalStackLayout Margin="25">
-            <Label Text="Weight Training"
+            <Label Text="Cardio Training"
                FontSize="Large"
                HorizontalOptions="Center"/>
-            <Label Text="Reps"
+            <HorizontalStackLayout>
+                <VerticalStackLayout>
+                    <Label  Text="Start Time"
+                            FontSize="Medium"
+                            HorizontalOptions="Center"/>
+                    <TimePicker Time="{Binding TrainStart}"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label  Text="End Time"
+                            FontSize="Medium"
+                            HorizontalOptions="Center"/>
+                    <TimePicker Time="{Binding TrainEnd}"/>
+                </VerticalStackLayout>
+                
+            </HorizontalStackLayout>
+            <Label Text="Distance"
                FontSize="Medium"
                HorizontalOptions="Center"/>
-            <Entry Text="{Binding Reps}"/>
-            <Label Text="Weight"
-               FontSize="Medium"
-               HorizontalOptions="Center"/>
-            <Entry Text="{Binding Weight}"/>
+            <Entry Text="{Binding TrainDistance}"/>
             <VerticalStackLayout.Triggers>
                 <DataTrigger TargetType="VerticalStackLayout"
-                             Binding="{Binding IsEndurance}"
+                             Binding="{Binding TrainIsEndurance}"
                              Value="true">
                     <Setter Property="IsVisible" Value="true"/>
                 </DataTrigger>
                 <DataTrigger TargetType="VerticalStackLayout"
-                             Binding="{Binding IsEndurance}"
+                             Binding="{Binding TrainIsEndurance}"
                              Value="false">
                     <Setter Property="IsVisible" Value="false"/>
                 </DataTrigger>
             </VerticalStackLayout.Triggers>
         </VerticalStackLayout>
         <Button Command="{Binding SwitchEnduranceCommand}"
-                Text="Change Workout Type">
+                Text="Change Workout Type"
+                TextColor="Black">
             <Button.Triggers>
                 <DataTrigger TargetType="Button"
-                             Binding="{Binding IsEndurance}"
+                             Binding="{Binding TrainIsEndurance}"
                              Value="true">
                     <Setter Property="BackgroundColor" Value="LightGrey"/>
                 </DataTrigger>
                 <DataTrigger TargetType="Button"
-                             Binding="{Binding IsEndurance}"
+                             Binding="{Binding TrainIsEndurance}"
                              Value="false">
                     <Setter Property="BackgroundColor" Value="White"/>
                 </DataTrigger>

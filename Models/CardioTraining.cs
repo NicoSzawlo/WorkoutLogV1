@@ -8,7 +8,7 @@ namespace WorkoutLogV1.Models
 {
     public class CardioTraining : Training
     {
-        TimeSpan Duration { get; set; }
-        double Distance { get; set; }
+        public TimeSpan Duration { get; set; }
+        public double Distance { get; set; }
     }
 }

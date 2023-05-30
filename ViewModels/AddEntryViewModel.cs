@@ -4,64 +4,71 @@ using CommunityToolkit.Mvvm.Messaging;
 using WorkoutLogV1.Messages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Xml.Linq;
 
 namespace WorkoutLogV1.ViewModels
 {
     public partial class AddEntryViewModel : ObservableObject
     {
         [ObservableProperty]
-        DateOnly date;
+        DateTime trainDate;
         [ObservableProperty]
-        string name;
+        string trainName;
         [ObservableProperty]
-        string note;
+        string trainNote;
         [ObservableProperty]
-        double weight;
+        double trainWeight;
         [ObservableProperty]
-        int reps;
+        int trainReps;
         [ObservableProperty]
-        TimeSpan time;
+        TimeOnly trainStart;
         [ObservableProperty]
-        double distance;
+        TimeOnly trainEnd;
         [ObservableProperty]
-        bool isEndurance;
+        double trainDistance;
         [ObservableProperty]
-        List<WeightExercise> weightExercises;
+        bool trainIsEndurance;
 
         public AddEntryViewModel()
         {
+            trainDate = DateTime.Now;
         }
 
         [RelayCommand]
         void AddTraining()
         {
-            Training training = new Training() {
-                Name = Name,
-                Note = Note,
-                Date = Date};
+            Training training= new Training();
+            if (!TrainIsEndurance)
+            {
+                training = new WeightTraining()
+                {
+                    Name = TrainName,
+                    Note = TrainNote,
+                    Date = TrainDate,
+                    Sets = new List<WeightExercise> { new WeightExercise { Reps = TrainReps, Weight = TrainWeight } }
+                };
+            }
+            else
+            {
+                TimeSpan duration = TrainEnd - TrainStart;
+                training = new CardioTraining()
+                {
+                    Name = TrainName,
+                    Note = TrainNote,
+                    Date = TrainDate,
+                    Duration = duration,
+                    Distance = TrainDistance
+                };
+            }
             WeakReferenceMessenger.Default.Send(new AddTrainingMessage(training));
         }
 
         [RelayCommand]
         void SwitchEndurance()
         {
-            IsEndurance = !IsEndurance;
+            TrainIsEndurance = !TrainIsEndurance;
         }
-        [RelayCommand]
-        void AddSet()
-        {
-            //if (WeightExercises == null)
-            //{
-            //    WeightExercises = new List<WeightExercise>() { new WeightExercise() { Reps = this.Reps, Weight = this.Weight } };
-
-            //}
-            //else
-            //{
-            //    WeightExercises.Add(new WeightExercise() { Reps = this.Reps, Weight = this.Weight });
-            //}
-            
-        }
-
     }
     
     
