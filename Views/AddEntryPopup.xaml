@@ -57,13 +57,13 @@
                HorizontalOptions="Center"/>
             <HorizontalStackLayout>
                 <VerticalStackLayout>
-                    <Label  Text="Start Time"
+                    <Label  Text="Start"
                             FontSize="Medium"
                             HorizontalOptions="Center"/>
                     <TimePicker Time="{Binding TrainStart}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
-                    <Label  Text="End Time"
+                    <Label  Text="End"
                             FontSize="Medium"
                             HorizontalOptions="Center"/>
                     <TimePicker Time="{Binding TrainEnd}"/>

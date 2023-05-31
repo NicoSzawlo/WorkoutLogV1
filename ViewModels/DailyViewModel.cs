@@ -40,12 +40,12 @@ namespace WorkoutLogV1.ViewModels
             };
         }
         [RelayCommand]
-        void OpenEntry(Training training)
+        async void OpenEntry(Training training)
         {
             WeakReferenceMessenger.Default.Send(new OpenTrainingMessage(training));
         }
 
-        public void Add(Training training)
+        private void Add(Training training)
         {
             if (training == null) throw new ArgumentNullException();
             DailyList.Add(training);

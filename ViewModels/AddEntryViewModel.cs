@@ -22,9 +22,9 @@ namespace WorkoutLogV1.ViewModels
         [ObservableProperty]
         int trainReps;
         [ObservableProperty]
-        TimeOnly trainStart;
+        TimeSpan trainStart;
         [ObservableProperty]
-        TimeOnly trainEnd;
+        TimeSpan trainEnd;
         [ObservableProperty]
         double trainDistance;
         [ObservableProperty]
