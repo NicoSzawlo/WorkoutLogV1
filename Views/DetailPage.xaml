@@ -6,9 +6,7 @@
              xmlns:model="clr-namespace:WorkoutLogV1.Models"
              x:DataType="viewmodels:DetailViewModel">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Text="Training:"/>
+        <Label Text="{Binding DetailTraining.Name}"/>
     </VerticalStackLayout>
 </ContentView>

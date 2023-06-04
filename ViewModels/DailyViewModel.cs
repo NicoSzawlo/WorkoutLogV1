@@ -13,16 +13,17 @@ using CommunityToolkit.Mvvm.Messaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using WorkoutLogV1.Messages;
 using CommunityToolkit.Mvvm.Input;
+using WorkoutLogV1.Services;
 
 namespace WorkoutLogV1.ViewModels
 {
-    public partial class DailyViewModel : ObservableObject
+    public partial class DailyViewModel : BaseViewModel
     {
         [ObservableProperty]
         ObservableCollection<Training> dailyList;
         [ObservableProperty]
         Training selectedTraining;
-        public DailyViewModel()
+        public DailyViewModel(INavigationService navigationService) : base(navigationService)
         {
 
             WeakReferenceMessenger.Default.Register<AddTrainingMessage>(this, (r, m) =>
@@ -40,9 +41,10 @@ namespace WorkoutLogV1.ViewModels
             };
         }
         [RelayCommand]
-        async void OpenEntry(Training training)
+        void OpenEntry(Training training)
         {
-            WeakReferenceMessenger.Default.Send(new OpenTrainingMessage(training));
+            //WeakReferenceMessenger.Default.Send(new OpenTrainingMessage(training));
+            NavigationService.NavigateToAsync("DailyPage",new Dictionary<string, object> { {"DetailTraining", training} });
         }
 
         private void Add(Training training)

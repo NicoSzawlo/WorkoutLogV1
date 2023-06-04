@@ -3,7 +3,7 @@
     x:Class="WorkoutLogV1.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:WorkoutLogV1"
+    xmlns:local="clr-namespace:WorkoutLogV1.Views"
     Shell.FlyoutBehavior="Flyout">
 
     <Shell.ItemTemplate>
@@ -34,19 +34,19 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:Views.MainPage}"
+        ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
     <ShellContent
         Title="Today"
-        ContentTemplate="{DataTemplate local:Views.DailyPage}"
+        ContentTemplate="{DataTemplate local:DailyPage}"
         Route="DailyPage" />
     <ShellContent
         Title="Calendar"
-        ContentTemplate="{DataTemplate local:Views.CalendarPage}"
+        ContentTemplate="{DataTemplate local:CalendarPage}"
         Route="CalendarPage" />
     <ShellContent
         Title="PR Log"
-        ContentTemplate="{DataTemplate local:Views.PrPage}"
+        ContentTemplate="{DataTemplate local:PrPage}"
         Route="PrPage" />
 
 

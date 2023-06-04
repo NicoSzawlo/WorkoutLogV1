@@ -7,9 +7,6 @@
                x:DataType="viewmodels:AddEntryViewModel"
                x:Class="WorkoutLogV1.Views.AddEntryPopup"
                Size="500,500,500,50">
-    <toolkit:Popup.BindingContext>
-        <viewmodels:AddEntryViewModel/>
-    </toolkit:Popup.BindingContext>
     <VerticalStackLayout>
         <!-- General Workout properties -->
         <Label Text="Date"

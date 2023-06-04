@@ -7,10 +7,6 @@
              x:Class="WorkoutLogV1.Views.DailyPage"
              x:Name="DailyView"
              Title="DailyPage">
-    
-    <ContentPage.BindingContext>
-        <viewmodels:DailyViewModel/>
-    </ContentPage.BindingContext>
 
     <AbsoluteLayout>
         <ListView BackgroundColor="Transparent"
