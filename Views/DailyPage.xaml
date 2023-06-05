@@ -13,7 +13,8 @@
                   AbsoluteLayout.LayoutBounds="0,0,1,1"
                   AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional"
                   Margin="10"
-                  ItemsSource="{Binding DailyList}">
+                  ItemsSource="{Binding DailyList}"
+                  SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Training">
                     <ViewCell>

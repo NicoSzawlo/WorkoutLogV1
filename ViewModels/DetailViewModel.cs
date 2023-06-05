@@ -13,25 +13,26 @@ using WorkoutLogV1.Views;
 
 namespace WorkoutLogV1.ViewModels
 {
-    [QueryProperty(nameof(DetailTraining),"DetailTraining")]
-    public partial class DetailViewModel : BaseViewModel
+    [QueryProperty(nameof(DetailedTraining),"DetailTraining")]
+    public partial class DetailViewModel : ObservableObject
     {
         [ObservableProperty]
-        private Training _detailTraining;
-        public DetailViewModel(INavigationService navigationService) : base(navigationService)
+        Training detailedTraining;
+
+        public DetailViewModel()
         {
-            WeakReferenceMessenger.Default.Register<OpenTrainingMessage>(this, (r, m) =>
-            {
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    Open(m.Value);
-                });
-            });
+            //WeakReferenceMessenger.Default.Register<OpenTrainingMessage>(this, (r, m) =>
+            //{
+            //    MainThread.BeginInvokeOnMainThread(() =>
+            //    {
+            //        Open(m.Value);
+            //    });
+            //});
         }
 
         private void Open(Training training)
         {
-            DetailTraining = training;
+            DetailedTraining = training;
         }
     }
 }

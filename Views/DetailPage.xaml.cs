@@ -2,11 +2,11 @@ using WorkoutLogV1.ViewModels;
 
 namespace WorkoutLogV1.Views;
 
-public partial class DetailPage : ContentView
+public partial class DetailPage : ContentPage
 {
-	public DetailPage(DetailViewModel viewModel)
+	public DetailPage(DetailViewModel vm)
 	{
 		InitializeComponent();
-		this.BindingContext = viewModel;
+		BindingContext = vm;
 	}
 }

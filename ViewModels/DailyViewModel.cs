@@ -17,13 +17,13 @@ using WorkoutLogV1.Services;
 
 namespace WorkoutLogV1.ViewModels
 {
-    public partial class DailyViewModel : BaseViewModel
+    public partial class DailyViewModel : ObservableObject
     {
         [ObservableProperty]
         ObservableCollection<Training> dailyList;
         [ObservableProperty]
         Training selectedTraining;
-        public DailyViewModel(INavigationService navigationService) : base(navigationService)
+        public DailyViewModel()
         {
 
             WeakReferenceMessenger.Default.Register<AddTrainingMessage>(this, (r, m) =>
@@ -41,10 +41,23 @@ namespace WorkoutLogV1.ViewModels
             };
         }
         [RelayCommand]
-        void OpenEntry(Training training)
+        async Task OpenEntry(Training training)
         {
-            //WeakReferenceMessenger.Default.Send(new OpenTrainingMessage(training));
-            NavigationService.NavigateToAsync("DailyPage",new Dictionary<string, object> { {"DetailTraining", training} });
+            //This navigates to page
+            //await Shell.Current.GoToAsync(nameof(DetailPage));
+
+            //This doesnt navigate to page and throws: System.InvalidCastException: 'Object must implement IConvertible.'
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Task.Delay(200);
+                await Shell.Current.GoToAsync(
+                nameof(DetailPage),
+                true,
+                new Dictionary<string, object>()
+                {
+                    { "DetailTraining", (Training)training }
+                });
+            });
         }
 
         private void Add(Training training)
