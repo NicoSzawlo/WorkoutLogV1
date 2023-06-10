@@ -43,22 +43,7 @@ namespace WorkoutLogV1.ViewModels
         [RelayCommand]
         async Task OpenEntry(Training training)
         {
-            //This navigates to page
-            //await Shell.Current.GoToAsync(nameof(DetailPage));
-
-            await Shell.Current.GoToAsync(
-                $"{nameof(DetailPage)}?DetailTraining={training}",
-                true);
-
-            //This doesnt navigate to page and throws: System.InvalidCastException: 'Object must implement IConvertible.'
-                //await Task.Delay(200);
-                //await Shell.Current.GoToAsync(
-                //nameof(DetailPage),
-                //true,
-                //new Dictionary<string, object>()
-                //{
-                //    { "DetailTraining", (Training)training }
-                //});
+            await Shell.Current.GoToAsync(nameof(DetailPage), new Dictionary<string, object> { { "DetailTraining", training } });
         }
 
         private void Add(Training training)

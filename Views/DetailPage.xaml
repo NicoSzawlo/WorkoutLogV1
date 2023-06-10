@@ -7,8 +7,19 @@
              Title="DetailPage">
     <VerticalStackLayout>
         <Label 
-            Text="{Binding DetailedTraining.Name}"
+            Text="Name"
             FontSize="Medium"
-            TextColor="Red"/>
+            HorizontalOptions="Center"/>
+        <Entry Text="{Binding DetailedTraining.Name}"/>
+        <Label 
+            Text="Date"
+            FontSize="Medium"
+            HorizontalOptions="Center"/>
+        <DatePicker Date="{Binding DetailedTraining.Date}"/>
+        <Label 
+            Text="Note"
+            FontSize="Medium"
+            HorizontalOptions="Center"/>
+        <Entry Text="{Binding DetailedTraining.Note}"/>
     </VerticalStackLayout>
 </ContentPage>

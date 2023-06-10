@@ -13,27 +13,20 @@ using WorkoutLogV1.Views;
 
 namespace WorkoutLogV1.ViewModels
 {
-    [QueryProperty(nameof(DetailedTraining),"DetailTraining")]
-    public partial class DetailViewModel : ObservableObject//, IQueryAttributable
+    //[QueryProperty(nameof(DetailedTraining),"DetailTraining")]
+    public partial class DetailViewModel : ObservableObject, IQueryAttributable
     {
         [ObservableProperty]
         Training detailedTraining;
 
-        //public void ApplyQueryAttributes(IDictionary<string, object> query)
-        //{
-        //    DetailedTraining = query["DetailTraining"] as Training;
-        //    OnPropertyChanged("DetailedTraining");
-        //}
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            DetailedTraining = query["DetailTraining"] as Training;
+            OnPropertyChanged("DetailedTraining");
+        }
 
         public DetailViewModel()
         {
-            //WeakReferenceMessenger.Default.Register<OpenTrainingMessage>(this, (r, m) =>
-            //{
-            //    MainThread.BeginInvokeOnMainThread(() =>
-            //    {
-            //        Open(m.Value);
-            //    });
-            //});
         }
 
         private void Open(Training training)
