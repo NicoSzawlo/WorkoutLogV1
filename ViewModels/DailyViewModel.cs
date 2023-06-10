@@ -46,18 +46,19 @@ namespace WorkoutLogV1.ViewModels
             //This navigates to page
             //await Shell.Current.GoToAsync(nameof(DetailPage));
 
+            await Shell.Current.GoToAsync(
+                $"{nameof(DetailPage)}?DetailTraining={training}",
+                true);
+
             //This doesnt navigate to page and throws: System.InvalidCastException: 'Object must implement IConvertible.'
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Delay(200);
-                await Shell.Current.GoToAsync(
-                nameof(DetailPage),
-                true,
-                new Dictionary<string, object>()
-                {
-                    { "DetailTraining", (Training)training }
-                });
-            });
+                //await Task.Delay(200);
+                //await Shell.Current.GoToAsync(
+                //nameof(DetailPage),
+                //true,
+                //new Dictionary<string, object>()
+                //{
+                //    { "DetailTraining", (Training)training }
+                //});
         }
 
         private void Add(Training training)
