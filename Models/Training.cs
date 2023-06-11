@@ -9,14 +9,10 @@ namespace WorkoutLogV1.Models
 {
     public partial class Training
     {
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public string Name { get; set; }
         public string Note { get; set; }
 
-        [RelayCommand]
-        public void OpenDetail()
-        {
-
-        }
     }
 }

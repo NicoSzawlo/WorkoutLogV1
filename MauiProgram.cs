@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
-using WorkoutLogV1.Services;
 using WorkoutLogV1.ViewModels;
 using WorkoutLogV1.Views;
 
@@ -23,17 +22,15 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
-		
-		builder.Services.AddSingleton<INavigationService, NavigationService>();
 		//UI registration
 		builder.Services.AddSingleton<DailyPage>();
         builder.Services.AddTransient<DetailPage>();
-        builder.Services.AddSingleton<AddEntryPopup>();
+        builder.Services.AddTransient<AddEntryPopup>();
 
         //Viewmodel Registration
         builder.Services.AddSingleton<DailyViewModel>();
         builder.Services.AddTransient<DetailViewModel>();
-        builder.Services.AddSingleton<AddEntryViewModel>();
+        builder.Services.AddTransient<AddEntryViewModel>();
 
         return builder.Build();
 	}

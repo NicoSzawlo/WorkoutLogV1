@@ -6,11 +6,10 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Xml.Linq;
-using WorkoutLogV1.Services;
 
 namespace WorkoutLogV1.ViewModels
 {
-    public partial class AddEntryViewModel : BaseViewModel
+    public partial class AddEntryViewModel : ObservableObject
     {
         [ObservableProperty]
         DateTime trainDate;
@@ -31,7 +30,7 @@ namespace WorkoutLogV1.ViewModels
         [ObservableProperty]
         bool trainIsEndurance;
 
-        public AddEntryViewModel(INavigationService navigationService) : base(navigationService)
+        public AddEntryViewModel()
         {
             trainDate = DateTime.Now;
         }

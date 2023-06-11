@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace WorkoutLogV1.Services
 {
-    public interface INavigationService
+    public class SerializationService
     {
-        Task NavigateToAsync(string route, IDictionary<string, object> parameters = null);
     }
 }

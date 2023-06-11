@@ -40,7 +40,7 @@
                 AbsoluteLayout.LayoutBounds="1,1,100,100"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
                 Margin="10"
-                Clicked="onAddEntryClicked"/>
+                Command="{Binding NewEntryCommand}"/>
     </AbsoluteLayout>
     
 </ContentPage>

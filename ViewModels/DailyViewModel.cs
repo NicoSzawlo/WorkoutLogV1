@@ -1,11 +1,4 @@
-﻿using Microsoft.Maui.Layouts;
-using CommunityToolkit.Maui.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using CommunityToolkit.Maui.Views;
 using WorkoutLogV1.Models;
 using WorkoutLogV1.Views;
 using System.Collections.ObjectModel;
@@ -13,7 +6,6 @@ using CommunityToolkit.Mvvm.Messaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using WorkoutLogV1.Messages;
 using CommunityToolkit.Mvvm.Input;
-using WorkoutLogV1.Services;
 
 namespace WorkoutLogV1.ViewModels
 {
@@ -23,6 +15,9 @@ namespace WorkoutLogV1.ViewModels
         ObservableCollection<Training> dailyList;
         [ObservableProperty]
         Training selectedTraining;
+
+        AddEntryPopup popup;
+
         public DailyViewModel()
         {
 
@@ -39,11 +34,17 @@ namespace WorkoutLogV1.ViewModels
                     new WeightExercise { Reps = 10, Weight = 19.5}, 
                     new WeightExercise { Reps = 15, Weight = 25.3 } } }
             };
+            popup = new AddEntryPopup(new AddEntryViewModel());
         }
         [RelayCommand]
         async Task OpenEntry(Training training)
         {
             await Shell.Current.GoToAsync(nameof(DetailPage), new Dictionary<string, object> { { "DetailTraining", training } });
+        }
+        [RelayCommand]
+        async Task NewEntry()
+        {
+            await Shell.Current.ShowPopupAsync(popup);
         }
 
         private void Add(Training training)
