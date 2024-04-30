@@ -52,7 +52,7 @@
             <Label Text="Cardio Training"
                FontSize="Large"
                HorizontalOptions="Center"/>
-            <HorizontalStackLayout>
+
                 <VerticalStackLayout>
                     <Label  Text="Start"
                             FontSize="Medium"
@@ -65,9 +65,7 @@
                             HorizontalOptions="Center"/>
                     <TimePicker Time="{Binding TrainEnd}"/>
                 </VerticalStackLayout>
-                
-            </HorizontalStackLayout>
-            <Label Text="Distance"
+                <Label Text="Distance"
                FontSize="Medium"
                HorizontalOptions="Center"/>
             <Entry Text="{Binding TrainDistance}"/>
@@ -101,6 +99,7 @@
             </Button.Triggers>
         </Button>
         <Button Command="{Binding AddTrainingCommand}"
+                CommandParameter="{Binding Source={RelativeSource Mode=FindAncestor, AncestorType={x:Type toolkit:Popup}}}"
                 Text="Add" 
                 WidthRequest="200"
                 HorizontalOptions="Center"/>

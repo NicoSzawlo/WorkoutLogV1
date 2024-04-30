@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Xml.Linq;
+using CommunityToolkit.Maui.Views;
 
 namespace WorkoutLogV1.ViewModels
 {
@@ -36,7 +37,7 @@ namespace WorkoutLogV1.ViewModels
         }
 
         [RelayCommand]
-        void AddTraining()
+        void AddTraining(object obj)
         {
             Training training= new Training();
             if (!TrainIsEndurance)
@@ -62,6 +63,10 @@ namespace WorkoutLogV1.ViewModels
                 };
             }
             WeakReferenceMessenger.Default.Send(new AddTrainingMessage(training));
+            if (obj is Popup popup)
+            {
+                popup.Close();
+            }
         }
 
         [RelayCommand]

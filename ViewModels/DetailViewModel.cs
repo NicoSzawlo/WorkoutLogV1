@@ -21,7 +21,7 @@ namespace WorkoutLogV1.ViewModels
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             DetailedTraining = query["DetailTraining"] as Training;
-            OnPropertyChanged("DetailedTraining");
+            OnPropertyChanged(nameof(DetailedTraining));
         }
 
         public DetailViewModel()
