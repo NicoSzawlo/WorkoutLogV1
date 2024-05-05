@@ -30,16 +30,19 @@ namespace WorkoutLogV1.ViewModels
             });
             dailyList = new ObservableCollection<Training>
             {
-                new WeightTraining { Name = "Squats", Sets = new List<WeightExercise> { 
-                    new WeightExercise { Reps = 10, Weight = 19.5}, 
-                    new WeightExercise { Reps = 15, Weight = 25.3 } } }
+                new WeightTraining { Name = "Squats", Sets = new List<WeightExercise> {
+                    new WeightExercise { Reps = 10, Weight = 19.5},
+                    new WeightExercise { Reps = 15, Weight = 25.3 } } },
+                new CardioTraining { Name = "Run", Date = DateTime.Now, Duration = new TimeSpan(1,0,0), Distance=10}
             };
             popup = new AddEntryPopup(new AddEntryViewModel());
         }
         [RelayCommand]
         async Task OpenEntry(Training training)
         {
-            await Shell.Current.GoToAsync(nameof(DetailPage), new Dictionary<string, object> { { "DetailTraining", training } });
+            if(training is WeightTraining) { await Shell.Current.GoToAsync(nameof(DetailWeightTrainingPage), new Dictionary<string, object> { { "DetailTraining", training } }); }
+            else { await Shell.Current.GoToAsync(nameof(DetailCardioTrainingPage), new Dictionary<string, object> { { "DetailTraining", training } }); }
+            
         }
         [RelayCommand]
         async Task NewEntry()

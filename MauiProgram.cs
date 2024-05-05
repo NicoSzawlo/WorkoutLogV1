@@ -24,12 +24,12 @@ public static class MauiProgram
 #endif
 		//UI registration
 		builder.Services.AddSingleton<DailyPage>();
-        builder.Services.AddTransient<DetailPage>();
+        builder.Services.AddTransient<DetailWeightTrainingPage>();
         builder.Services.AddTransient<AddEntryPopup>();
 
         //Viewmodel Registration
         builder.Services.AddSingleton<DailyViewModel>();
-        builder.Services.AddTransient<DetailViewModel>();
+        builder.Services.AddTransient<DetailWeightTrainingViewModel>();
         builder.Services.AddTransient<AddEntryViewModel>();
 
         return builder.Build();

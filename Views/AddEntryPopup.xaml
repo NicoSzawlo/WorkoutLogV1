@@ -5,104 +5,110 @@
                xmlns:viewmodels="clr-namespace:WorkoutLogV1.ViewModels;assembly=WorkoutLogV1"
                xmlns:model="clr-namespace:WorkoutLogV1.Models"
                x:DataType="viewmodels:AddEntryViewModel"
-               x:Class="WorkoutLogV1.Views.AddEntryPopup"
-               Size="500,500,500,50">
-    <VerticalStackLayout>
-        <!-- General Workout properties -->
-        <Label Text="Date"
-               FontSize="Large"
-               HorizontalOptions="Center"/>
-        <DatePicker Date="{Binding TrainDate}"/>
-        <Label Text="Name"
-               FontSize="Large"
-               HorizontalOptions="Center"/>
-        <Entry Text="{Binding TrainName}"/>
-        <Label Text="Note"
-               FontSize="Large"
-               HorizontalOptions="Center"/>
-        <Entry Text="{Binding TrainNote}"/>
-        <!-- Weight workout Controls -->
+               x:Class="WorkoutLogV1.Views.AddEntryPopup">
+    <Grid>
         <VerticalStackLayout Margin="25">
-            <Label Text="Weight Training"
-               FontSize="Large"
-               HorizontalOptions="Center"/>
-            <Label Text="Reps"
-               FontSize="Medium"
-               HorizontalOptions="Center"/>
-            <Entry Text="{Binding TrainReps}"/>
-            <Label Text="Weight"
-               FontSize="Medium"
-               HorizontalOptions="Center"/>
-            <Entry Text="{Binding TrainWeight}"/>
-            <VerticalStackLayout.Triggers>
-                <DataTrigger TargetType="VerticalStackLayout"
-                             Binding="{Binding TrainIsEndurance}"
-                             Value="true">
-                    <Setter Property="IsVisible" Value="false"/>
-                </DataTrigger>
-                <DataTrigger TargetType="VerticalStackLayout"
-                             Binding="{Binding TrainIsEndurance}"
-                             Value="false">
-                    <Setter Property="IsVisible" Value="true"/>
-                </DataTrigger>
-            </VerticalStackLayout.Triggers>
-        </VerticalStackLayout>
-        <!-- Cardio workout Controls -->
-        <VerticalStackLayout Margin="25">
-            <Label Text="Cardio Training"
-               FontSize="Large"
-               HorizontalOptions="Center"/>
+            <!-- General Workout properties -->
+            <Label Text="Date"
+                   FontSize="Large"
+                   HorizontalOptions="Center" />
+            <DatePicker Date="{Binding TrainDate}" />
+            <Label Text="Name"
+                   FontSize="Large"
+                   HorizontalOptions="Center" />
+            <Entry Text="{Binding TrainName}" />
+            <Label Text="Note"
+                   FontSize="Large"
+                   HorizontalOptions="Center" />
+            <Entry Text="{Binding TrainNote}" />
+            <!-- Weight workout Controls -->
+            <VerticalStackLayout Margin="25">
+                <Label Text="Weight Training"
+                       FontSize="Large"
+                       HorizontalOptions="Center" />
+                <Label Text="Reps"
+                       FontSize="Medium"
+                       HorizontalOptions="Center" />
+                <Entry Text="{Binding TrainReps}" />
+                <Label Text="Weight"
+                       FontSize="Medium"
+                       HorizontalOptions="Center" />
+                <Entry Text="{Binding TrainWeight}" />
+                <VerticalStackLayout.Triggers>
+                    <DataTrigger TargetType="VerticalStackLayout"
+                                 Binding="{Binding TrainIsEndurance}"
+                                 Value="true">
+                        <Setter Property="IsVisible"
+                                Value="false" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="VerticalStackLayout"
+                                 Binding="{Binding TrainIsEndurance}"
+                                 Value="false">
+                        <Setter Property="IsVisible"
+                                Value="true" />
+                    </DataTrigger>
+                </VerticalStackLayout.Triggers>
+            </VerticalStackLayout>
+            <!-- Cardio workout Controls -->
+            <VerticalStackLayout Margin="25">
+                <Label Text="Cardio Training"
+                       FontSize="Large"
+                       HorizontalOptions="Center" />
 
                 <VerticalStackLayout>
                     <Label  Text="Start"
                             FontSize="Medium"
-                            HorizontalOptions="Center"/>
-                    <TimePicker Time="{Binding TrainStart}"/>
+                            HorizontalOptions="Center" />
+                    <TimePicker Time="{Binding TrainStart}" />
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label  Text="End"
                             FontSize="Medium"
-                            HorizontalOptions="Center"/>
-                    <TimePicker Time="{Binding TrainEnd}"/>
+                            HorizontalOptions="Center" />
+                    <TimePicker Time="{Binding TrainEnd}" />
                 </VerticalStackLayout>
                 <Label Text="Distance"
-               FontSize="Medium"
-               HorizontalOptions="Center"/>
-            <Entry Text="{Binding TrainDistance}"/>
-            <VerticalStackLayout.Triggers>
-                <DataTrigger TargetType="VerticalStackLayout"
-                             Binding="{Binding TrainIsEndurance}"
-                             Value="true">
-                    <Setter Property="IsVisible" Value="true"/>
-                </DataTrigger>
-                <DataTrigger TargetType="VerticalStackLayout"
-                             Binding="{Binding TrainIsEndurance}"
-                             Value="false">
-                    <Setter Property="IsVisible" Value="false"/>
-                </DataTrigger>
-            </VerticalStackLayout.Triggers>
+                       FontSize="Medium"
+                       HorizontalOptions="Center" />
+                <Entry Text="{Binding TrainDistance}" />
+                <VerticalStackLayout.Triggers>
+                    <DataTrigger TargetType="VerticalStackLayout"
+                                 Binding="{Binding TrainIsEndurance}"
+                                 Value="true">
+                        <Setter Property="IsVisible"
+                                Value="true" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="VerticalStackLayout"
+                                 Binding="{Binding TrainIsEndurance}"
+                                 Value="false">
+                        <Setter Property="IsVisible"
+                                Value="false" />
+                    </DataTrigger>
+                </VerticalStackLayout.Triggers>
+            </VerticalStackLayout>
+            <Button Command="{Binding SwitchEnduranceCommand}"
+                    Text="Change Workout Type"
+                    TextColor="Black">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button"
+                                 Binding="{Binding TrainIsEndurance}"
+                                 Value="true">
+                        <Setter Property="BackgroundColor"
+                                Value="LightGrey" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Button"
+                                 Binding="{Binding TrainIsEndurance}"
+                                 Value="false">
+                        <Setter Property="BackgroundColor"
+                                Value="White" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button Command="{Binding AddTrainingCommand}"
+                    CommandParameter="{Binding Source={RelativeSource Mode=FindAncestor, AncestorType={x:Type toolkit:Popup}}}"
+                    Text="Add"
+                    WidthRequest="200"
+                    HorizontalOptions="Center" />
         </VerticalStackLayout>
-        <Button Command="{Binding SwitchEnduranceCommand}"
-                Text="Change Workout Type"
-                TextColor="Black">
-            <Button.Triggers>
-                <DataTrigger TargetType="Button"
-                             Binding="{Binding TrainIsEndurance}"
-                             Value="true">
-                    <Setter Property="BackgroundColor" Value="LightGrey"/>
-                </DataTrigger>
-                <DataTrigger TargetType="Button"
-                             Binding="{Binding TrainIsEndurance}"
-                             Value="false">
-                    <Setter Property="BackgroundColor" Value="White"/>
-                </DataTrigger>
-            </Button.Triggers>
-        </Button>
-        <Button Command="{Binding AddTrainingCommand}"
-                CommandParameter="{Binding Source={RelativeSource Mode=FindAncestor, AncestorType={x:Type toolkit:Popup}}}"
-                Text="Add" 
-                WidthRequest="200"
-                HorizontalOptions="Center"/>
-    </VerticalStackLayout>
-
+    </Grid>
 </toolkit:Popup>

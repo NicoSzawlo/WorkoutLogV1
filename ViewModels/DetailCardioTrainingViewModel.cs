@@ -12,20 +12,15 @@ using WorkoutLogV1.Views;
 
 namespace WorkoutLogV1.ViewModels
 {
-    //[QueryProperty(nameof(DetailedTraining),"DetailTraining")]
-    public partial class DetailViewModel : ObservableObject, IQueryAttributable
-    {
+    public partial class DetailCardioTrainingViewModel : ObservableObject,IQueryAttributable
+    { 
         [ObservableProperty]
-        Training detailedTraining;
-
+        CardioTraining detailedTraining;
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
-            DetailedTraining = query["DetailTraining"] as Training;
+            DetailedTraining = query["DetailTraining"] as CardioTraining;
             OnPropertyChanged(nameof(DetailedTraining));
         }
-
-        public DetailViewModel()
-        {
-        }
+        public DetailCardioTrainingViewModel() { }
     }
 }

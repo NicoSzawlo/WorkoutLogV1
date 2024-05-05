@@ -61,6 +61,9 @@
 	  <Compile Update="Views\DailyPage.xaml.cs">
 	    <DependentUpon>DailyPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\DetailWeightTrainingPage.xaml.cs">
+	    <DependentUpon>DetailWeightTrainingPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\PrPage.xaml.cs">
 	    <DependentUpon>PrPage.xaml</DependentUpon>
 	  </Compile>
@@ -76,7 +79,10 @@
 	  <MauiXaml Update="Views\DailyPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\DetailPage.xaml">
+	  <MauiXaml Update="Views\DetailCardioTrainingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DetailWeightTrainingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PrPage.xaml">
