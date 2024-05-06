@@ -1,14 +1,11 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Messaging;
-using Microsoft.Maui.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WorkoutLogV1.Messages;
+﻿using CommunityToolkit.Maui.Views;
 using WorkoutLogV1.Models;
 using WorkoutLogV1.Views;
+using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.ComponentModel;
+using WorkoutLogV1.Messages;
+using CommunityToolkit.Mvvm.Input;
 
 namespace WorkoutLogV1.ViewModels
 {
@@ -16,10 +13,17 @@ namespace WorkoutLogV1.ViewModels
     {
         [ObservableProperty]
         WeightTraining detailedTraining;
+
+        AddSetPopup popup;
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             DetailedTraining = query["DetailTraining"] as WeightTraining;
             OnPropertyChanged(nameof(DetailedTraining));
+        }
+        [RelayCommand]
+        async Task NewSet()
+        {
+            await Shell.Current.ShowPopupAsync(popup);
         }
 
         public DetailWeightTrainingViewModel()

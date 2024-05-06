@@ -31,8 +31,8 @@ namespace WorkoutLogV1.ViewModels
             dailyList = new ObservableCollection<Training>
             {
                 new WeightTraining { Name = "Squats", Sets = new List<WeightExercise> {
-                    new WeightExercise { Reps = 10, Weight = 19.5},
-                    new WeightExercise { Reps = 15, Weight = 25.3 } } },
+                    new() { Reps = 10, Weight = 19.5},
+                    new() { Reps = 15, Weight = 25.3 } } },
                 new CardioTraining { Name = "Run", Date = DateTime.Now, Duration = new TimeSpan(1,0,0), Distance=10}
             };
             popup = new AddEntryPopup(new AddEntryViewModel());
@@ -52,7 +52,11 @@ namespace WorkoutLogV1.ViewModels
 
         private void Add(Training training)
         {
-            if (training == null) throw new ArgumentNullException();
+            if (training == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             DailyList.Add(training);
         }
     }

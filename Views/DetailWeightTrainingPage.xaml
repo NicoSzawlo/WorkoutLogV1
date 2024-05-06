@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WorkoutLogV1.Views.DetailWeightTrainingPage"
+             xmlns:model="clr-namespace:WorkoutLogV1.Models"
              xmlns:viewmodels="clr-namespace:WorkoutLogV1.ViewModels;assembly=WorkoutLogV1"
              x:DataType="viewmodels:DetailWeightTrainingViewModel"
              Title="DetailWeightTrainingPage">
@@ -18,5 +19,39 @@
                FontSize="Medium"
                HorizontalOptions="Center" />
         <Entry Text="{Binding DetailedTraining.Note}" />
+        <ListView BackgroundColor="Transparent"
+                  AbsoluteLayout.LayoutBounds="0,0,1,1"
+                  AbsoluteLayout.LayoutFlags="PositionProportional,HeightProportional,WidthProportional"
+                  Margin="10"
+                  ItemsSource="{Binding DetailedTraining.Sets}"
+                  SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:WeightExercise">
+                    <ViewCell>
+                        <HorizontalStackLayout Padding="5"
+                                               HorizontalOptions="Center">
+                            <VerticalStackLayout Margin="5">
+                                <Label Text="Reps" />
+                                <Label Text="{Binding Reps}"
+                                       FontSize="Large"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       Grid.Column="1" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Margin="10,5">
+                                <Label Text="Weight" />
+                                <Label Text="{Binding Weight}"
+                                       FontSize="Large"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       Grid.Column="1" />
+                            </VerticalStackLayout>
+
+                        </HorizontalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </VerticalStackLayout>
+
 </ContentPage>

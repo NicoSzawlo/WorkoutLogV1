@@ -26,11 +26,13 @@ public static class MauiProgram
 		builder.Services.AddSingleton<DailyPage>();
         builder.Services.AddTransient<DetailWeightTrainingPage>();
         builder.Services.AddTransient<AddEntryPopup>();
+		builder.Services.AddTransient<AddSetPopup>();
 
         //Viewmodel Registration
         builder.Services.AddSingleton<DailyViewModel>();
         builder.Services.AddTransient<DetailWeightTrainingViewModel>();
         builder.Services.AddTransient<AddEntryViewModel>();
+        builder.Services.AddTransient<AddSetViewModel>();
 
         return builder.Build();
 	}

@@ -9,5 +9,6 @@ public partial class AppShell : Shell
 		Routing.RegisterRoute(nameof(Views.DetailWeightTrainingPage), typeof(Views.DetailWeightTrainingPage));
         Routing.RegisterRoute(nameof(Views.DetailCardioTrainingPage), typeof(Views.DetailCardioTrainingPage));
         Routing.RegisterRoute(nameof(Views.AddEntryPopup), typeof(Views.AddEntryPopup));
-	}
+        Routing.RegisterRoute(nameof(Views.AddSetPopup), typeof(Views.AddSetPopup));
+    }
 }
